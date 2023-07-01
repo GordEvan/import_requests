@@ -1,0 +1,22 @@
+import requests
+
+def generate_combined_signal(signal1, signal2):
+    # Здесь вам нужно реализовать логику генерации комбинированного сигнала
+    combined_signal = signal1 + signal2
+    return combined_signal
+
+def send_webhook_request(combined_signal):
+    # Здесь вы отправляете сгенерированный сигнал по веб-хуку
+    webhook_url = 'https://example.com/webhook'  # Замените на свой URL веб-хука
+    payload = {'signal': combined_signal}
+    response = requests.post(webhook_url, json=payload)
+    if response.status_code == 200:
+        print('Сигнал успешно отправлен по веб-хуку.')
+    else:
+        print('Ошибка при отправке сигнала по веб-хуку.')
+
+# Пример использования
+signal1 = 'Сигнал 1'
+signal2 = 'Сигнал 2'
+combined_signal = generate_combined_signal(signal1, signal2)
+send_webhook_request(combined_signal)
